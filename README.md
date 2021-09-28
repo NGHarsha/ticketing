@@ -8,4 +8,5 @@ So we need to make sure to cancel event publication if db update fials and vicev
 ### NATS GOES WILD CASE
 ![Screenshot from 2021-09-28 11-55-06](https://user-images.githubusercontent.com/52374838/135034352-80a67ff3-982f-476e-bb7f-3b114b71bce7.png)
 ### ONE SOLUTION
+Maintain a collection for storing events with NATS publication status as a field of collection. A separae snippet should be watching the events collection and publish onto NATS. If it succeeds commit the db transaction. Else rollback it.
 ![Screenshot from 2021-09-28 11-56-13](https://user-images.githubusercontent.com/52374838/135034478-3b6be0fd-f766-4448-be27-2e4a3c837670.png)
